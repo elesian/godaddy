@@ -1,0 +1,56 @@
+<template>
+    <lightning-card title="Audio Files" icon-name="custom:custom14">
+        <!-- Add this part to show the loading spinner when isLoading is true -->
+        <template if:true={isLoading}>
+            <div class="loading-spinner">
+                <lightning-spinner variant="brand" size="medium"></lightning-spinner>
+            </div>
+        </template>
+        <!-- End of loading spinner part -->
+        <div class="slds-m-around_medium">
+            <lightning-button label="Refresh" onclick={refresh} class="slds-m-bottom_small"></lightning-button>
+            <lightning-accordion allow-multiple-sections-open>
+                <template if:true={audioFiles}>
+                    <template for:each={audioFiles} for:item="file">
+                        <lightning-accordion-section key={file.name} name={file.name} label={file.name}>
+                            <audio controls data-filename={file.name} onplay={handlePlay}>
+                                <source src={file.url} type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <lightning-button label="Summarize Call" data-filename={file.name} onclick={handleSummarize}
+                                class="slds-m-left_medium">
+                            </lightning-button>
+                            <!-- Sentiment score part -->
+                            <template if:true={file.sentimentScore}>
+                                <div class="slds-m-left_medium sentiment-score" style={file.scoreStyle}>
+                                    {file.sentimentScore}
+                                </div>
+                            </template>
+                            
+                            <template if:true={file.sentimentMetatags}>
+                                <div class="slds-m-top_medium sentiment-tags">
+                                    <template for:each={file.sentimentMetatags} for:item="tag">
+                                        <span class="slds-badge slds-theme_inverse" key={tag}>{tag}</span>
+                                    </template>
+                                </div>
+                            </template>
+                            <!-- Transcription result scoped to each file -->
+                            <template if:true={file.transcriptionResult}>
+                                <div class="transcription-result slds-m-around_medium">
+                                    <h1 class="result-header">Call Summary</h1>
+                                    <div class="scrollable">
+                                        <template for:each={file.transcriptionResult} for:item="resultItem">
+                                            <p key={resultItem.key}>
+                                                <strong>{resultItem.key}:</strong> {resultItem.value}
+                                            </p>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+                        </lightning-accordion-section>
+                    </template>
+                </template>
+            </lightning-accordion>
+        </div>
+    </lightning-card>
+</template>

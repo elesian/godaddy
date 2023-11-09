@@ -1,0 +1,34 @@
+<template>
+    <div class="slds-m-around_medium">
+        <div class="message-container">
+            <template if:true={isLoading}>
+                <template if:true={isLoading}>
+                    <div class="slds-spinner_container">
+                        <div role="status" class="slds-spinner slds-spinner_medium">
+                            <span class="slds-assistive-text">Loading</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            <template for:each={updatedMessages} for:item="message">
+                <div key={message.id} class={message.className}>
+                    <div class="message">
+                        <div class="message-icon" lwc:if={message.isAi}>
+                            <lightning-icon icon-name="standard:story" alternative-text="Story"
+                                title="Story"></lightning-icon>
+                        </div>
+                        <div class="message-icon" lwc:else>
+                            <lightning-icon icon-name="standard:user" alternative-text="User"
+                                title="User"></lightning-icon>
+                        </div>
+                        <div class="message-content">
+                            <lightning-formatted-text value={message.content}></lightning-formatted-text>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

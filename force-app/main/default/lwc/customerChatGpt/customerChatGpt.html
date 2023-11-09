@@ -1,0 +1,65 @@
+<template>
+    <div class="slds-card">
+        <div class="slds-card__header">
+            <header class="slds-media">
+                <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-standard-story">
+                        <lightning-icon icon-name="standard:story" alternative-text="Story"
+                            title="Story"></lightning-icon>
+                    </span>
+                </div>
+                <div class="slds-media__body title">
+                    <h2 class="slds-card__header-title">Einstein Assistant</h2>
+                </div>
+            </header>
+        </div>
+        <template if:true={isLoading}>
+            <div style="height:6rem;background-color:#16325c;position:relative">
+                <div class="slds-spinner_container">
+                  <div role="status" class="slds-spinner slds-spinner_medium">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                  </div>
+                </div>
+              </div>
+        </template>
+        <template if:false={isLoading}>
+            <template if:true={response}>
+                <!-- <c-gpt-chat-container is-loading={isLoading} updated-messages={updatedMessages}></c-gpt-chat-container> -->
+                <template if:false={editMode}>
+                    <p class="slds-m-around_small">{einsteinReply}</p>
+
+                    <lightning-button class="slds-m-around_small" label="Edit Reply" title="Edit Reply"
+                        onclick={handleEditReply}></lightning-button>
+                    <lightning-button class="slds-m-around_small" variant="brand" label="Send Reply" title="Send Reply"
+                        onclick={handleSendReply}></lightning-button>
+                    <lightning-button label="Search Knowledge Base" title="Search Knowledge Base"
+                        class="slds-m-around_small" onclick={getGroundedResponse}
+                        disabled={isLoading}>
+                    </lightning-button>
+
+
+                </template>
+                <template if:true={editMode}>
+                    <lightning-textarea class="slds-m-around_small einstein-edit auto-resize-textarea"
+                        value={einsteinReply} onchange={saveManualEdit}></lightning-textarea>
+                    <lightning-button class="slds-m-around_small" label="Save Reply" title="Save Reply"
+                        onclick={handleSaveReply} data-text={einsteinReply}></lightning-button>
+                </template>
+            </template>
+        </template>
+        <!-- <div class="slds-m-around_medium">
+            <div class="auto-grow-input">
+                <lightning-textarea label="Enter your message" value={currentMessage} onchange={handleMessageChange}
+                    disabled={isLoading}></lightning-textarea>
+            </div>
+            <div class="slds-m-top_small">
+                <lightning-button label="Send" variant="brand" onclick={handleMessageSend}
+                    disabled={isLoading}></lightning-button>
+            </div>
+        </div> -->
+        <div class="slds-m-around_medium">
+        </div>
+    </div>
+</template>

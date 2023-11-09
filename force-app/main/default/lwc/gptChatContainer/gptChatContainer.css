@@ -1,0 +1,65 @@
+/* Style for the message container */
+.message-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    max-height: 400px; /* Set the maximum height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.title{
+    margin-top: 5px;
+}
+
+.loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Style for user messages */
+.user-message {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: #f0f0f0; /* Alternate background color */
+}
+
+/* Style for assistant messages */
+.ai-message {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: #e0e0e0; /* Alternate background color */
+}
+
+.system {
+    display: none;
+}
+
+/* Style for the message icon */
+.message-icon {
+    display: flex; /* Added */
+    align-self: flex-start; /* Updated to align at the top */
+    margin: 20px 10px;
+    width: 24px;
+    height: 100%;
+}
+
+.message-content {
+    margin: 27px 10px 27px 10px;
+}
+
+.auto-grow-input {
+    overflow: hidden;
+    resize: none;
+    min-height: 40px; /* Adjust as needed */
+}

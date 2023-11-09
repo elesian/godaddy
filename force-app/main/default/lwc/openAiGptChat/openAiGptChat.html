@@ -1,0 +1,64 @@
+<template>
+    <div class="slds-card">
+        <div class="slds-card__header">
+            <header class="slds-media">
+                <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-standard-story">
+                        <lightning-icon icon-name="standard:story" alternative-text="Story"
+                            title="Story"></lightning-icon>
+                    </span>
+                </div>
+                <div class="slds-media__body title">
+                    <h2 class="slds-card__header-title">Einstein Assistant</h2>
+                </div>
+            </header>
+        </div>
+        <template if:true={response}>
+            <!-- <div class="slds-m-around_medium">
+                <div class="message-container">
+                    <template if:true={isLoading}>
+                        <template if:true={isLoading}>
+                            <div class="slds-spinner_container">
+                                <div role="status" class="slds-spinner slds-spinner_medium">
+                                    <span class="slds-assistive-text">Loading</span>
+                                    <div class="slds-spinner__dot-a"></div>
+                                    <div class="slds-spinner__dot-b"></div>
+                                </div>
+                            </div>
+                        </template>
+                    </template>
+                    <template for:each={updatedMessages} for:item="message">
+                        <div key={message.id} class={message.className}>
+                            <div class="message">
+                                <div class="message-icon" lwc:if={message.isAi}>
+                                    <lightning-icon icon-name="standard:story" alternative-text="Story"
+                                        title="Story"></lightning-icon>
+                                </div>
+                                <div class="message-icon" lwc:else>
+                                    <lightning-icon icon-name="standard:user" alternative-text="User"
+                                        title="User"></lightning-icon>
+                                </div>
+                                <div class="message-content">
+                                    <lightning-formatted-text value={message.content}></lightning-formatted-text>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div> -->
+            <c-gpt-chat-container is-loading={isLoading} updated-messages={updatedMessages}></c-gpt-chat-container>
+        </template>
+        <div class="slds-m-around_medium">
+            <div class="auto-grow-input">
+                <lightning-textarea label="Enter your message" value={currentMessage} onchange={handleMessageChange}
+                    disabled={isLoading}></lightning-textarea>
+            </div>
+            <div class="slds-m-top_small">
+                <lightning-button label="Send" variant="brand" onclick={handleMessageSend}
+                    disabled={isLoading}></lightning-button>
+            </div>
+        </div>
+        <div class="slds-m-around_medium">
+        </div>
+    </div>
+</template>

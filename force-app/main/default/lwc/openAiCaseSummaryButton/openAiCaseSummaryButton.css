@@ -1,0 +1,36 @@
+.slds-modal__container {
+    max-width: 70%; /* Adjust the width as needed */
+}
+
+/* openAIResponseModal.css */
+.modal-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Set the container's height to 100% */
+}
+
+.slds-textarea {
+    flex: 1; /* Let the textarea take up available space vertically */
+}
+
+/* openAIResponseModal.css */
+.full-width {
+    width: 100%;
+    margin:0px 200px;
+    --sds-c-textarea-sizing-min-height:200px;
+
+}
+
+.full-width2{
+    width: 100%;
+}
+
+.lrp {
+    padding: 0px 20px;
+}
+
+.bm {
+    margin-bottom: 10px ;
+}

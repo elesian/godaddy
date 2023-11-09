@@ -1,0 +1,35 @@
+.transcription-result .scrollable {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.result-header {
+    font-weight: bold;
+    margin-bottom: 20px; /* Adjust as needed */
+    font-size: 24px;
+    text-align: center;
+}
+
+.sentiment-tags .slds-badge {
+    background-color: white;
+    color: #333; /* Dark grey font color */
+    border: 1px solid grey; /* Grey border */
+    border-radius: 12px;  /* Rounded corners */
+    margin-right: 5px;   /* Space between tags */
+}
+
+
+.sentiment-score {
+    display: inline-block;
+    width: 60px;  /* Increased size */
+    height: 60px; /* Increased size */
+    border-radius: 50%;
+    border: 5px solid; /* Increased border thickness */
+    line-height: 50px; /* Adjusted to vertically center the larger text */
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px; /* Increased font size */
+    float: right; /* Right align within the container */
+}

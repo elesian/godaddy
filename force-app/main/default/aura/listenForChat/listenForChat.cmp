@@ -1,0 +1,10 @@
+<aura:component controller="OpenAiController" implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global"
+    description="Conversation toolkit api sample">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="chatLog" type="Object" />
+    <aura:attribute name="readyForSummary" type="Object"/>
+    <lightning:conversationToolkitAPI aura:id="conversationKit" />
+    <ui:button label="Einstein Reply" press="{!c.getChatLog}" />
+    <ui:button label="Create Case" press="{!c.createACase}" />
+    <c:customerChatGpt chatLog="{!v.chatLog}" readyForSummary="{!v.readyForSummary}" onsendreply="{!c.handleSendReply}" oncasesuccess="{!c.handleCaseSuccess}" recordId="{!v.recordId}"></c:customerChatGpt>
+</aura:component>

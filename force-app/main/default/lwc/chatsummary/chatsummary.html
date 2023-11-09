@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Chatbot Interaction Summary" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <lightning-button label="Summarize Chatbot Interaction" onclick={handleSummarize}></lightning-button>
+            
+            <template if:true={isLoading}>
+                <div class="slds-spinner_container">
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </template>
+            
+            <template if:true={summary}>
+                <div class="summary-container slds-m-top_medium slds-scrollable_y">
+                    <div class="chat-bubble">{summary}</div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
